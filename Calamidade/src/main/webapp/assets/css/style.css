@@ -1,0 +1,267 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size:13px;
+  overflow-x:hidden;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+header {
+    height:40px;
+    background-color:#FFF;
+    color:#000;
+}
+.header {
+    max-width:1140px;
+    height:100%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+}
+
+/*CSS menu flutuante*/
+#map {
+  height: 95%;
+}
+
+#floating-panel {
+  position: absolute;
+  top: 100px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: "Roboto", "sans-serif";
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+
+/*CSS logo nav bar*/
+.logo {
+    width:100px;
+}
+.logoimg {
+    width:30px;
+    height:30px;
+    background-color:#F0C769;
+    border-radius:20px;
+    padding-left: 5px;
+    align-content: center;
+    justify-content: center;
+}
+.logoimg img{
+    width:20px;
+    height:20px;
+}
+
+
+CSS nav bar
+.menu-opener {
+    display:none;
+}
+.menu {
+    flex:1;
+    display:flex;
+    justify-content: flex-end;
+}
+.menu ul,
+.menu li {
+    list-style:none;
+}
+.menu ul {
+    display:flex;
+}
+.menu li a {
+    color:#000;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    border-bottom:5px solid #FFF;
+}
+.menu li a:hover,
+.menu .active a {
+    border-bottom:5px solid #F0C769;
+    color:#999999;
+}
+
+.menu li.dropdown {
+    position: relative;
+}
+
+.menu li.dropdown .dropbtn {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 5px solid #FFF;
+    cursor: pointer;
+    transition: border-bottom 0.3s ease;
+}
+
+.menu li.dropdown .dropbtn:hover {
+    border-bottom: 5px solid #F0C769;
+    color: #999999;
+}
+
+.menu li.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFF;
+    min-width: 160px;
+    padding: 12px 16px;
+    z-index: 1;
+    right: 0;
+    top: 100%;
+    border-radius: 5px;
+    top: calc(100% + 5px);
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+
+#button-login {
+    background-color: #F0C769;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#button-login:hover {
+  background-color: #F0E169;
+  cursor: pointer;
+}
+
+.button {
+    display:inline-block;
+    background-color:#F0C769;
+    color:#FFF;
+    text-transform: uppercase;
+    font-size:12px;
+    font-weight:600;
+    text-decoration: none;
+    padding:10px 30px;
+    margin-top:30px;
+    border-radius:20px;
+}
+.button:hover {
+    cursor: pointer;
+}
+.button--dark {
+    background-color:#000;
+}
+.button--dark:hover {
+    background-color:#F0C769;
+}
+
+.button--light {
+    background-color:#F0C769;
+}
+.button--light:hover {
+    background-color:#000;
+}
+
+
+CSS tabelas
+.content-table-container {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.insert-link {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #CC2839;
+}
+
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content-table th, .content-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.content-table th {
+    background-color: #f2f2f2;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.content-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.content-table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.content-table a {
+    margin-right: 5px;
+    color: #CC2839;
+    text-decoration: none;
+}
+
+.content-table td #button-form {
+    background-color: #CC2839;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.content-table td #button-form:hover {
+    cursor: pointer;
+    background-color:#000;
+}
+
+.content-table td form #delete-btn {
+    appearance: none;
+    background: none;
+    border: none;
+}
+
+.content-table td form #delete-btn:hover {
+  cursor: pointer;
+  border-radius: 25px;
+  background: none;
+}
+
+.content-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.coluna-reservada {
+    width: 50px;
+}
+
+#delete-btn {
+    padding: 1;
+}
+#delete-btn img {
+    margin: auto;
+}
