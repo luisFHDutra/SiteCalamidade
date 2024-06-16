@@ -9,12 +9,10 @@ public class Database {
     public Database(){
         conecta();
     }
-    // create database bancodados;
-    // \c bancodados
-    // create table usuarios(id serial primary key, usuario text, senha text, email text);
+    
     public void conecta() {
         String nomeDriver = "org.postgresql.Driver";
-        String localBancoDados = "jdbc:postgresql://localhost:5432/bancodados";
+        String localBancoDados = "jdbc:postgresql://localhost:5432/bancocalamidade";
         String usuario = "postgres";
         String senha = "postgres";
 

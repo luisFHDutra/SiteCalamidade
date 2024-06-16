@@ -5,8 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Site Calamidade</title>
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets/images/pino-de-localizacao.png">
         
     </head>
