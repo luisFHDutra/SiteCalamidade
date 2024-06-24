@@ -19,7 +19,7 @@
                 <input type="text" name="titulo" placeholder="Título">
                 <input type="text" name="resumo" placeholder="Resumo">
                 <input type="radio" name="status" value="Aprovado">
-                <input type="text" name="local" placeholder="Local">
+                <input type="text" name="local" id="local" placeholder="Local">
                 <button type="submit" id="button-form">Enviar</button>
             </form>
         </div>
