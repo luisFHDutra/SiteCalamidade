@@ -13,7 +13,7 @@
         </tr>
         <%
             Database data = new Database();
-            ResultSet rs = data.execConsulta("SELECT * FROM usuarios");
+            ResultSet rs = data.execConsulta("SELECT * FROM usuario");
             while(rs.next()){
         %>
         <tr>

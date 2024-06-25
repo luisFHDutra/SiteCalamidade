@@ -301,3 +301,21 @@ header {
 #delete-btn img {
     margin: auto;
 }
+
+input[type="file"]::file-selector-button {
+  background-color: #CC2839;
+  color: #FFF;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #000;
+  cursor: pointer;
+}
+
+.ocorrencia-thumbnail {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}

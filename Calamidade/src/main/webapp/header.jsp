@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets/images/pino-de-localizacao.png">
-        
+
     </head>
     <body>
         <header>
@@ -41,18 +41,22 @@
                                 } else {
                             %>
                             <li><a href="logout.jsp">Deslogar</a></li>
-                                <% if(!request.getRequestURI().endsWith("usuarios.jsp")) { %>
+                                <% if(request.getRequestURI().endsWith("usuarios.jsp")) { %>
+                            <li><a href="ocorrencias.jsp">Ocorrências</a></li>
+                                <%} else if(request.getRequestURI().endsWith("ocorrencias.jsp")) { %>
+                            <li><a href="usuarios.jsp">Usuários</a></li>
+                                <% } else{ %>
                             <li><a href="ocorrencias.jsp">Ocorrências</a></li>
                             <li><a href="usuarios.jsp">Usuários</a></li>
-                                <%
-                                        }
-                                    }
-                                %>
+                                <% }} %>
                         </ul>
                     </nav>
                 </div>
             </div>
 
+            <%
+                if(session.getAttribute("LOGADO")==null){
+            %>
             <script>
                 let isMenuLoginVisible = false;
 
@@ -63,5 +67,7 @@
                     document.getElementById("menuLogin").style.display = isMenuLoginVisible ? "block" : "none";
                 });
             </script>
+            <%
+                }
+            %>
         </header>
-        

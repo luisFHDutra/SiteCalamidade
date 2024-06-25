@@ -1,12 +1,15 @@
 package com.calamidade.site.resources;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import java.io.IOException;
 
+@MultipartConfig
 @WebServlet(name = "processaocorrencia", urlPatterns = {"/processaocorrencia"})
 public class processaocorrencia extends HttpServlet {
 
@@ -26,28 +29,55 @@ public class processaocorrencia extends HttpServlet {
             String datetime = request.getParameter("datetime");
             String titulo = request.getParameter("titulo");
             String resumo = request.getParameter("resumo");
+            Part imagemPart = request.getPart("imagem");
             String status = request.getParameter("status");
-            String local = request.getParameter("local");
-
-            String excluirId = request.getParameter("excluir");
-            if (excluirId != null) {
-//                data.excluirUsuario(Integer.parseInt(excluirId));
-                response.sendRedirect(request.getContextPath() + "/ocorrencias.jsp");
-                return;
-            }
-
+            String aberto = request.getParameter("aberto");
+            String latitude = request.getParameter("latitude");
+            String longitude = request.getParameter("longitude");
+            
             if (alterarId != null) {
-//                data.atualizarUsuario(Integer.parseInt(alterarId), usuario, senha, email);
-                response.sendRedirect(request.getContextPath() + "/ocorrencias.jsp");
-                return;
+                try {
+                    if (imagemPart != null && imagemPart.getSize() > 0) {
+                        byte[] bytes = new byte[(int) imagemPart.getSize()];
+                        imagemPart.getInputStream().read(bytes);
+                        String imagemBase64 = java.util.Base64.getEncoder().encodeToString(bytes);
+
+                        data.atualizarOcorrencia(Integer.parseInt(alterarId), nome, email, datetime, titulo, resumo, status, imagemBase64, latitude, longitude, aberto);
+                    } else {
+                        data.atualizarOcorrencia(Integer.parseInt(alterarId), nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto);
+                    }
+                    response.sendRedirect(request.getContextPath() + "/ocorrencias.jsp");
+                    return;
+                } catch (Exception e) {
+                    System.err.println("Erro ao atualizar a ocorrência: " + e.getMessage());
+                    response.sendRedirect(request.getContextPath() + "/index.jsp?error=true&message=update_failed");
+                    return;
+                }
             }
 
-            if (nome != null && email != null && datetime != null && titulo != null && resumo != null && status != null && local != null) {
-//                data.inserirUsuario(usuario, senha, email);
+            try {
+                if (imagemPart != null && imagemPart.getSize() > 0) {
+                    byte[] bytes = new byte[(int) imagemPart.getSize()];
+                    imagemPart.getInputStream().read(bytes);
+                    String imagemBase64 = java.util.Base64.getEncoder().encodeToString(bytes);
+
+                    data.inserirOcorrencia(nome, email, datetime, titulo, resumo, status, imagemBase64, latitude, longitude, aberto);
+                } else {
+                    data.inserirOcorrencia(nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto);
+                }
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
+            } catch (Exception e) {
+                System.err.println("Erro ao inserir a ocorrência: " + e.getMessage());
+                response.sendRedirect(request.getContextPath() + "/index.jsp?error=true&message=insert_failed");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
+            try {
+                response.sendRedirect(request.getContextPath() + "/index.jsp?error=true");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
     }
 

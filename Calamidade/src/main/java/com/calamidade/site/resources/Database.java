@@ -1,6 +1,7 @@
 package com.calamidade.site.resources;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class Database {
 
@@ -103,10 +104,35 @@ public class Database {
     }
 
     public void inserirOcorrencia(
-            String nomeCompleto, String email, Timestamp dataHoraOcorrencia,
-            String tituloOcorrencia, String resumoOcorrencia, boolean statusAprovacao,
-            String imagem, double latitude, double longitude, boolean emAberto) {
+            String nomeCompleto, String email, String datetime,
+            String tituloOcorrencia, String resumoOcorrencia, String statusAprovacao,
+            String imagem, String latitude, String longitude, String emAberto) {
 
+        System.out.println("nome " + nomeCompleto);
+        System.out.println("email " + email);
+        System.out.println("timestamp " + datetime);
+        System.out.println("titulo " + tituloOcorrencia);
+        System.out.println("resumo " + resumoOcorrencia);
+        System.out.println("status " + statusAprovacao);
+        System.out.println("aberto " + emAberto);
+        
+        double latitudeDouble = Double.parseDouble(latitude.replace(",", "."));
+        double longitudeDouble = Double.parseDouble(longitude.replace(",", "."));
+        
+        boolean statusBoolean = Boolean.parseBoolean(statusAprovacao);
+        boolean emAbertoBoolean = Boolean.parseBoolean(emAberto);
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+
+        Timestamp timestamp;
+        try {
+            java.util.Date parsedDate = dateFormat.parse(datetime);
+            timestamp = new Timestamp(parsedDate.getTime());
+        } catch (Exception e) {
+            System.err.println("Erro ao converter a data: " + e.getMessage());
+            return;
+        }
+        
         String sql = "INSERT INTO ocorrencia (nome_completo, email, datahora_ocorrencia, titulo_ocorrencia, "
                 + "resumo_ocorrencia, status_aprovacao, imagem, latitude, longitude, em_aberto) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -115,14 +141,14 @@ public class Database {
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setString(1, nomeCompleto);
             statement.setString(2, email);
-            statement.setTimestamp(3, dataHoraOcorrencia);
+            statement.setTimestamp(3, timestamp);
             statement.setString(4, tituloOcorrencia);
             statement.setString(5, resumoOcorrencia);
-            statement.setBoolean(6, statusAprovacao);
+            statement.setBoolean(6, statusBoolean);
             statement.setString(7, imagem);
-            statement.setDouble(8, latitude);
-            statement.setDouble(9, longitude);
-            statement.setBoolean(10, emAberto);
+            statement.setDouble(8, latitudeDouble);
+            statement.setDouble(9, longitudeDouble);
+            statement.setBoolean(10, emAbertoBoolean);
 
             statement.executeUpdate();
             statement.close();
@@ -143,24 +169,42 @@ public class Database {
         }
     }
 
-    public void atualizarOcorrencia(int id, String novoNomeCompleto, String novoEmail, Timestamp novaDataHoraOcorrencia,
-            String novoTituloOcorrencia, String novoResumoOcorrencia, boolean novoStatusAprovacao,
-            String novaImagem, double novaLatitude, double novaLongitude, boolean novoEmAberto) {
+    public void atualizarOcorrencia(int id, String novoNomeCompleto, String novoEmail, String novoDatetime,
+            String novoTituloOcorrencia, String novoResumoOcorrencia, String novoStatusAprovacao,
+            String novaImagem, String novaLatitude, String novaLongitude, String novoEmAberto) {
         String sql = "UPDATE ocorrencia SET nome_completo = ?, email = ?, datahora_ocorrencia = ?, titulo_ocorrencia = ?, "
                 + "resumo_ocorrencia = ?, status_aprovacao = ?, imagem = ?, latitude = ?, longitude = ?, em_aberto = ? "
                 + "WHERE id = ?";
+        
+        double latitudeDouble = Double.parseDouble(novaLatitude.replace(",", "."));
+        double longitudeDouble = Double.parseDouble(novaLongitude.replace(",", "."));
+        
+        boolean statusBoolean = Boolean.parseBoolean(novoStatusAprovacao);
+        boolean emAbertoBoolean = Boolean.parseBoolean(novoEmAberto);
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+
+        Timestamp timestamp;
+        try {
+            java.util.Date parsedDate = dateFormat.parse(novoDatetime);
+            timestamp = new Timestamp(parsedDate.getTime());
+        } catch (Exception e) {
+            System.err.println("Erro ao converter a data: " + e.getMessage());
+            return;
+        }
+        
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setString(1, novoNomeCompleto);
             statement.setString(2, novoEmail);
-            statement.setTimestamp(3, novaDataHoraOcorrencia);
+            statement.setTimestamp(3, timestamp);
             statement.setString(4, novoTituloOcorrencia);
             statement.setString(5, novoResumoOcorrencia);
-            statement.setBoolean(6, novoStatusAprovacao);
+            statement.setBoolean(6, statusBoolean);
             statement.setString(7, novaImagem);
-            statement.setDouble(8, novaLatitude);
-            statement.setDouble(9, novaLongitude);
-            statement.setBoolean(10, novoEmAberto);
+            statement.setDouble(8, latitudeDouble);
+            statement.setDouble(9, longitudeDouble);
+            statement.setBoolean(10, emAbertoBoolean);
             statement.setInt(11, id);
 
             statement.executeUpdate();

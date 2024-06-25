@@ -8,7 +8,7 @@
 <script>
     let map, heatmap;
     let marker = null;
-    
+
     function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
             zoom: 13,
@@ -81,7 +81,7 @@
         document.getElementById("longitude").value = location.lng();
     }
 
-// Heatmap data: 500 Points
+// Heatmap data
     function getPoints() {
         return [
             new google.maps.LatLng(-29.44614762262356, -51.959135315340056),
@@ -105,14 +105,16 @@
 
     <div id="forms-ocorrencia">
         <form id="insertForm" action="processaocorrencia" method="post" enctype="multipart/form-data">
-            <input type="text" name="nome" placeholder="Nome completo">
-            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="nome" placeholder="Nome completo" required>
+            <input type="email" name="email" placeholder="Email" required>
             <input type="datetime-local" name="datetime">
-            <input type="text" name="titulo" placeholder="Título">
-            <input type="text" name="resumo" placeholder="Resumo">
+            <input type="text" name="titulo" placeholder="Título" required>
+            <input type="text" name="resumo" placeholder="Resumo" required>
             <input type="file" name="imagem" accept="image/*">
-            <input type="number" name="latitude" id="latitude" placeholder="Latitude">
-            <input type="number" name="longitude" id="longitude" placeholder="Longitude">
+            <input type="text" name="latitude" id="latitude" pattern="^-?\d{1,3}(.\d+)?$" placeholder="Latitude" required>
+            <input type="text" name="longitude" id="longitude" pattern="^-?\d{1,3}(.\d+)?$" placeholder="Longitude" required>
+            <input type="hidden" name="status" value="false">
+            <input type="hidden" name="aberto" value="true">
             <button type="submit" id="button-form">Enviar</button>
         </form>
     </div>
