@@ -44,7 +44,7 @@ public class processaocorrencia extends HttpServlet {
 
             if (nome != null && email != null && datetime != null && titulo != null && resumo != null && status != null && local != null) {
 //                data.inserirUsuario(usuario, senha, email);
-                response.sendRedirect(request.getContextPath() + "/ocorrencias.jsp");
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();

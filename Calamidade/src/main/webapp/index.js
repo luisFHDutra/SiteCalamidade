@@ -15,7 +15,6 @@ function initMap() {
   // Adiciona o evento de clique no mapa para adicionar um marcador.
   map.addListener("click", function(event) {
     addMarker(event.latLng);
-    console.log('Latitude: ' + event.latLng.lat() + ', Longitude: ' + event.latLng.lng());
   });
 
   document.getElementById("toggle-heatmap").addEventListener("click", toggleHeatmap);
@@ -68,9 +67,10 @@ function addMarker(location) {
     position: location,
     map: map,
   });
-
-  // Atualize o campo 'local' do formulário com as coordenadas do marcador.
-  document.getElementById("local").value = `Latitude: ${location.lat()}, Longitude: ${location.lng()}`;
+  console.log('Latitude: ' + location.lat() + ', Longitude: ' + location.lat());
+  
+  document.getElementById("latitude").value = location.lat();
+  document.getElementById("longitude").value = location.lng();
 }
 
 // Heatmap data: 500 Points

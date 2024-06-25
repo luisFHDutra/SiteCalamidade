@@ -1,6 +1,25 @@
 create database bancocalamidade;
 
-create table usuarios(id serial primary key, usuario text, senha text, email text);
-insert into usuarios values (1, 'admin', 'admin', 'admin@gmail.com');
+create table usuario(id serial PRIMARY KEY, usuario text, senha text, email text);
+insert into usuario (usuario, senha, email) values ('admin', 'admin', 'admin@gmail.com');
 
-create table ocorrencia(id serial primary key, nome_completo text, email text, datahora_ocorrencia timestamp, titulo_ocorrencia text, resumo_ocorrencia text, status_aprovacao boolean, local text);
+CREATE TABLE ocorrencia (id serial PRIMARY KEY
+	,nome_completo text
+	,email text
+	,datahora_ocorrencia timestamp
+	,titulo_ocorrencia text
+	,resumo_ocorrencia text
+	,status_aprovacao boolean
+	,imagem text
+	,latitude decimal(10, 8)
+	,longitude decimal(10, 8)
+	,em_aberto boolean);
+
+CREATE TABLE tipo_desastre (id serial primary key, nome text);
+INSERT INTO tipo_desastre (id, nome) VALUES
+(1, 'Inundações'),
+(2, 'Deslizamentos'),
+(3, 'Secas'),
+(4, 'Tempestades'),
+(5, 'Queimadas'),
+(6, 'Erupção Vulcânica');
