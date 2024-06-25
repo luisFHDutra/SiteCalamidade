@@ -48,8 +48,8 @@
             <td><%=rs.getString("titulo_ocorrencia")%></td>
             <td><%=rs.getString("resumo_ocorrencia")%></td>
             <td><%=status%></td>
-            <td><%=rs.getString("latitude")%></td>
-            <td><%=rs.getString("longitude")%></td>
+            <td><%=rs.getDouble("latitude")%></td>
+            <td><%=rs.getDouble("longitude")%></td>
             <td><%=emAberto%></td>
             <td>
                 <% if (imagemBase64 != null && !imagemBase64.isEmpty()) { %>
