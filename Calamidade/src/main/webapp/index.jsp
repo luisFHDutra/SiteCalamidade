@@ -2,10 +2,22 @@
 
 <div id="container">
     <div id="floating-panel">
-        <button id="toggle-heatmap">Toggle Heatmap</button>
-        <button id="change-gradient">Change gradient</button>
-        <button id="change-radius">Change radius</button>
-        <button id="change-opacity">Change opacity</button>
+        <button id="toggle-heatmap">Mapa de calor</button>
+        <button id="change-gradient">Mudar gradiente</button>
+        <button id="change-radius">Mudar raio</button>
+        <button id="change-opacity">Mudar opacidade</button>
+
+        <label for="tipoOcorrencia">Tipo de Ocorrência:</label>
+        <select id="tipoOcorrencia">
+            <option value="todos">Todos</option>
+            <option value="1">Inundações</option>
+            <option value="2">Deslizamentos</option>
+            <option value="3">Secas</option>
+            <option value="4">Tempestades</option>
+            <option value="5">Queimadas</option>
+            <option value="6">Erupção Vulcânica</option>
+        </select>
+
     </div>
     <div id="map"></div>
 
@@ -21,6 +33,17 @@
             <input type="text" name="longitude" id="longitude" pattern="^-?\d{1,3}(.\d+)?$" placeholder="Longitude" required>
             <input type="hidden" name="status" value="false">
             <input type="hidden" name="aberto" value="true">
+            
+            <label for="tipo">Tipo de Ocorrência:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="1">Inundações</option>
+                <option value="2">Deslizamentos</option>
+                <option value="3">Secas</option>
+                <option value="4">Tempestades</option>
+                <option value="5">Queimadas</option>
+                <option value="6">Erupção Vulcânica</option>
+            </select>
+            
             <button type="submit" id="button-form">Enviar</button>
         </form>
     </div>

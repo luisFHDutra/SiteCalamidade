@@ -106,7 +106,7 @@ public class Database {
     public void inserirOcorrencia(
             String nomeCompleto, String email, String datetime,
             String tituloOcorrencia, String resumoOcorrencia, String statusAprovacao,
-            String imagem, String latitude, String longitude, String emAberto) {
+            String imagem, String latitude, String longitude, String emAberto, String tipo) {
 
         System.out.println("nome " + nomeCompleto);
         System.out.println("email " + email);
@@ -122,6 +122,8 @@ public class Database {
         boolean statusBoolean = Boolean.parseBoolean(statusAprovacao);
         boolean emAbertoBoolean = Boolean.parseBoolean(emAberto);
         
+        int tipoInt = Integer.parseInt(tipo);
+        
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 
         Timestamp timestamp;
@@ -134,8 +136,8 @@ public class Database {
         }
         
         String sql = "INSERT INTO ocorrencia (nome_completo, email, datahora_ocorrencia, titulo_ocorrencia, "
-                + "resumo_ocorrencia, status_aprovacao, imagem, latitude, longitude, em_aberto) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "resumo_ocorrencia, status_aprovacao, imagem, latitude, longitude, em_aberto, id_tipo) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
@@ -149,6 +151,7 @@ public class Database {
             statement.setDouble(8, latitudeDouble);
             statement.setDouble(9, longitudeDouble);
             statement.setBoolean(10, emAbertoBoolean);
+            statement.setInt(11, tipoInt);
 
             statement.executeUpdate();
             statement.close();
@@ -171,9 +174,9 @@ public class Database {
 
     public void atualizarOcorrencia(int id, String novoNomeCompleto, String novoEmail, String novoDatetime,
             String novoTituloOcorrencia, String novoResumoOcorrencia, String novoStatusAprovacao,
-            String novaImagem, String novaLatitude, String novaLongitude, String novoEmAberto) {
+            String novaImagem, String novaLatitude, String novaLongitude, String novoEmAberto, String novoTipo) {
         String sql = "UPDATE ocorrencia SET nome_completo = ?, email = ?, datahora_ocorrencia = ?, titulo_ocorrencia = ?, "
-                + "resumo_ocorrencia = ?, status_aprovacao = ?, imagem = ?, latitude = ?, longitude = ?, em_aberto = ? "
+                + "resumo_ocorrencia = ?, status_aprovacao = ?, imagem = ?, latitude = ?, longitude = ?, em_aberto = ?, id_tipo = ? "
                 + "WHERE id = ?";
         
         double latitudeDouble = Double.parseDouble(novaLatitude.replace(",", "."));
@@ -181,6 +184,8 @@ public class Database {
         
         boolean statusBoolean = Boolean.parseBoolean(novoStatusAprovacao);
         boolean emAbertoBoolean = Boolean.parseBoolean(novoEmAberto);
+        
+        int tipoInt = Integer.parseInt(novoTipo);
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 
@@ -205,7 +210,8 @@ public class Database {
             statement.setDouble(8, latitudeDouble);
             statement.setDouble(9, longitudeDouble);
             statement.setBoolean(10, emAbertoBoolean);
-            statement.setInt(11, id);
+            statement.setInt(11, tipoInt);
+            statement.setInt(12, id);
 
             statement.executeUpdate();
             statement.close();

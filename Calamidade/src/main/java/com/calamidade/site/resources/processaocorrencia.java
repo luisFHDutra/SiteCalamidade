@@ -34,6 +34,7 @@ public class processaocorrencia extends HttpServlet {
             String aberto = request.getParameter("aberto");
             String latitude = request.getParameter("latitude");
             String longitude = request.getParameter("longitude");
+            String tipo = request.getParameter("tipo");
             
             if (alterarId != null) {
                 try {
@@ -42,9 +43,9 @@ public class processaocorrencia extends HttpServlet {
                         imagemPart.getInputStream().read(bytes);
                         String imagemBase64 = java.util.Base64.getEncoder().encodeToString(bytes);
 
-                        data.atualizarOcorrencia(Integer.parseInt(alterarId), nome, email, datetime, titulo, resumo, status, imagemBase64, latitude, longitude, aberto);
+                        data.atualizarOcorrencia(Integer.parseInt(alterarId), nome, email, datetime, titulo, resumo, status, imagemBase64, latitude, longitude, aberto, tipo);
                     } else {
-                        data.atualizarOcorrencia(Integer.parseInt(alterarId), nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto);
+                        data.atualizarOcorrencia(Integer.parseInt(alterarId), nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto, tipo);
                     }
                     response.sendRedirect(request.getContextPath() + "/ocorrencias.jsp");
                     return;
@@ -61,9 +62,9 @@ public class processaocorrencia extends HttpServlet {
                     imagemPart.getInputStream().read(bytes);
                     String imagemBase64 = java.util.Base64.getEncoder().encodeToString(bytes);
 
-                    data.inserirOcorrencia(nome, email, datetime, titulo, resumo, status, imagemBase64, latitude, longitude, aberto);
+                    data.inserirOcorrencia(nome, email, datetime, titulo, resumo, status, imagemBase64, latitude, longitude, aberto, tipo);
                 } else {
-                    data.inserirOcorrencia(nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto);
+                    data.inserirOcorrencia(nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto, tipo);
                 }
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             } catch (Exception e) {

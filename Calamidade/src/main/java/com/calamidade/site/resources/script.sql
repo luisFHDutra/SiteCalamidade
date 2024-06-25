@@ -13,7 +13,8 @@ CREATE TABLE ocorrencia (id serial PRIMARY KEY
 	,imagem text
 	,latitude decimal(10, 8)
 	,longitude decimal(10, 8)
-	,em_aberto boolean);
+	,em_aberto boolean
+        ,id_tipo integer);
 
 CREATE TABLE tipo_desastre (id serial primary key, nome text);
 INSERT INTO tipo_desastre (id, nome) VALUES
@@ -23,3 +24,5 @@ INSERT INTO tipo_desastre (id, nome) VALUES
 (4, 'Tempestades'),
 (5, 'Queimadas'),
 (6, 'Erupção Vulcânica');
+
+ALTER TABLE ocorrencia ADD FOREIGN KEY (id_tipo) REFERENCES tipo_desastre (id);

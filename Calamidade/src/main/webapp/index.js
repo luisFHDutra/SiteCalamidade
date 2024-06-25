@@ -1,8 +1,8 @@
 let map, heatmap;
 let marker = null;
 
-function fetchPoints() {
-    return fetch('points.jsp')
+function fetchPoints(tipo = "todos") {
+    return fetch(`points.jsp?tipo=${tipo}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -37,6 +37,10 @@ function initMap() {
     document.getElementById("change-gradient").addEventListener("click", changeGradient);
     document.getElementById("change-opacity").addEventListener("click", changeOpacity);
     document.getElementById("change-radius").addEventListener("click", changeRadius);
+    document.getElementById("tipoOcorrencia").addEventListener("change", () => {
+        const tipo = document.getElementById("tipoOcorrencia").value;
+        updateMapWithFilteredPoints(tipo);
+    });
 }
 
 function toggleHeatmap() {
@@ -53,7 +57,7 @@ function changeGradient() {
         "rgba(0, 0, 255, 1)",
         "rgba(0, 0, 223, 1)",
         "rgba(0, 0, 191, 1)",
-        "rgba(0, 0, 159, 1)",
+        "rgba(0, 0,159, 1)",
         "rgba(0, 0, 127, 1)",
         "rgba(63, 0, 91, 1)",
         "rgba(127, 0, 63, 1)",
@@ -84,6 +88,18 @@ function addMarker(location) {
 
     document.getElementById("latitude").value = location.lat();
     document.getElementById("longitude").value = location.lng();
+}
+
+function updateMapWithFilteredPoints(tipo) {
+    fetchPoints(tipo)
+        .then(points => {
+            heatmap.setMap(null); // Remove heatmap existente
+            heatmap = new google.maps.visualization.HeatmapLayer({
+                data: points,
+                map: map,
+            });
+        })
+        .catch(error => console.error('Error fetching points:', error));
 }
 
 window.initMap = initMap;

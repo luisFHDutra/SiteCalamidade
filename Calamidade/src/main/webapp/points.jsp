@@ -9,7 +9,12 @@
     response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
     Database data = new Database();
-    ResultSet rs = data.execConsulta("SELECT latitude, longitude FROM ocorrencia WHERE status_aprovacao = true");
+    String tipo = request.getParameter("tipo");
+    String query = "SELECT latitude, longitude FROM ocorrencia WHERE status_aprovacao = true";
+    if (tipo != null && !tipo.equals("todos")) {
+        query += " AND id_tipo = " + tipo;
+    }
+    ResultSet rs = data.execConsulta(query);
 
     // Construção do JSON de resposta
     StringBuilder pointsJson = new StringBuilder("[");
