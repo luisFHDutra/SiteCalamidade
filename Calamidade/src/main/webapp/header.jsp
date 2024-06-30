@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Site Calamidade</title>
+        <title>KALAMITY</title>
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
@@ -15,9 +15,7 @@
         <header>
             <div class="header">
                 <div class="logo">
-                    <div class="logoimg">
-                        <img src="./assets/images/pino-de-localizacao.png" />
-                    </div>
+                    KALAMITY
                 </div>
                 <div class="menu">
                     <nav>

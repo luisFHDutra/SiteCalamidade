@@ -40,7 +40,6 @@
     <div id="map"></div>
 
     <div id="forms-ocorrencia">
-        
         <form id="insertForm" action="processaocorrencia" method="post" enctype="multipart/form-data" class="row g-3">
 
             <div class="col-12">
@@ -70,7 +69,7 @@
             
             <label for="inputDatetime">Data e hora</label>
             <div class="pan2 col-md-2 form-control" id="span-datepicker">
-                <input type="datetime-local" name="datetime" id="datepicker">
+                <input type="datetime-local" name="datetime" id="datepicker" required>
             </div>
 
             <div class="col-12">
@@ -90,7 +89,7 @@
             <input type="hidden" name="status" value="false">
             <input type="hidden" name="aberto" value="true">
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary" onclick="alert('Ocorrência cadastrada com sucesso');">Enviar</button>
             </div>
         </form>
     </div>
@@ -101,7 +100,7 @@
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=visualization&v=weekly"
     defer
-></script>       
+></script>
 
 </body>
 </html>
