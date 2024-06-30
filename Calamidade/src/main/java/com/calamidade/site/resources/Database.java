@@ -219,5 +219,34 @@ public class Database {
             e.printStackTrace();
         }
     }
+    
+    public void aprovaOcorrencia(int id, boolean status){
+        String sql = "UPDATE ocorrencia SET status_aprovacao = ? WHERE id = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setBoolean(1, status);
+            statement.setInt(2, id);
 
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void emAbertoOcorrencia(int id, boolean emAberto){
+        String sql = "UPDATE ocorrencia SET em_aberto = ? WHERE id = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setBoolean(1, emAberto);
+            statement.setInt(2, id);
+
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

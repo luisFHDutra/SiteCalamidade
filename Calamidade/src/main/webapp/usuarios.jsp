@@ -26,7 +26,7 @@
                 <form action="processausuarios" method="post">
                     <input type="hidden" name="excluir" value="<%=rs.getString("id")%>">
                     <button type="submit" id="delete-btn" onclick="return confirm('Tem certeza que deseja excluir esse usuário?');">
-                        <img class="content-icon" src="./assets/images/icon-excluir.png" alt=""/>
+                        <img class="content-icon" src="assets/images/excluir.png" alt=""/>
                     </button>
                 </form>
             </td>

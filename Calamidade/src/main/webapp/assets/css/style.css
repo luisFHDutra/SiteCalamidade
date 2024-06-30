@@ -46,28 +46,35 @@ header {
 
 /*CSS menu flutuante*/
 #floating-panel {
-  position: absolute;
-  top: 50px;
-  left: 20%;
-  z-index: 1000;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: "Montserrat", "Roboto", "sans-serif";
-  line-height: 30px;
-  padding-left: 10px;
+    position: absolute;
+    top: 50px;
+    left: 15%;
+    z-index: 1000;
+    font-family: "Montserrat", "Roboto", "sans-serif";
 }
 
 /*CSS formulario de ocorrencia*/
 #forms-ocorrencia {
     height: 50%;
-    width: 50vw;
+    width: 30vw;
     background-color: #f9f9f9;
     padding: 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* Adiciona rolagem se o conteúdo for maior que a altura */
+    overflow-y: auto;
     margin-top: 10px;
+}
+
+#forms-ocorrencia form button {
+    background-color: #F0C769;
+    border: None;
+}
+#forms-ocorrencia form button:hover {
+    background-color: #000;
+    border: None;
+}
+
+.inline-block-child {
+  display: inline-block;
 }
 
 #insertForm {
@@ -80,6 +87,19 @@ header {
     margin-bottom: 10px;
 }
 
+#datepicker {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border:none;
+}
+#span-datepicker {
+    height: 34px;
+    width: 522px;
+    position: relative;
+}
 
 /*CSS logo nav bar*/
 .logo {
@@ -183,11 +203,12 @@ header {
     color: #FFF;
     padding: 5px;
     border-radius: 5px;
+    border: none;
 }
 
 #button-login:hover {
-  background-color: #000;
-  cursor: pointer;
+    background-color: #000;
+    cursor: pointer;
 }
 
 .button {
@@ -284,10 +305,31 @@ header {
 }
 
 .content-table td form #delete-btn:hover {
-  cursor: pointer;
-  border-radius: 25px;
-  background: none;
+    cursor: pointer;
+    border-radius: 25px;
+    background: none;
 }
+
+#delete-btn img {
+    margin: auto;
+}
+
+.content-table td form #alterar-btn {
+    appearance: none;
+    background: none;
+    border: none;
+}
+
+.content-table td form #alterar-btn:hover {
+    cursor: pointer;
+    border-radius: 25px;
+    background: none;
+}
+
+#alterar-btn img {
+    margin: auto;
+}
+
 
 .content-icon {
     width: 25px;
@@ -298,26 +340,22 @@ header {
     width: 50px;
 }
 
-#delete-btn img {
-    margin: auto;
-}
-
 input[type="file"]::file-selector-button {
-  background-color: #F0C769;
-  color: #FFF;
-  padding: 5px;
-  border-radius: 5px;
+    background-color: #F0C769;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 input[type="file"]::file-selector-button:hover {
-  background-color: #000;
-  cursor: pointer;
+    background-color: #000;
+    cursor: pointer;
 }
 
 .ocorrencia-thumbnail {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
 }
 
 #alterRow td {
