@@ -10,7 +10,7 @@
 
     Database data = new Database();
     String tipo = request.getParameter("tipo");
-    String query = "SELECT latitude, longitude FROM ocorrencia WHERE status_aprovacao = true";
+    String query = "SELECT latitude, longitude FROM ocorrencia WHERE status_aprovacao = true AND em_aberto = true";
     if (tipo != null && !tipo.equals("todos")) {
         query += " AND id_tipo = " + tipo;
     }

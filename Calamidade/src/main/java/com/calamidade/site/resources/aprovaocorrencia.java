@@ -30,10 +30,10 @@ public class aprovaocorrencia extends HttpServlet {
             if (aprovarId != null) {
                 data.aprovaOcorrencia(Integer.parseInt(aprovarId), statusBool);
                 
-                if (statusBool) {
-                    System.out.println("Status está como: " + statusBool);
-                    Email.enviarEmail(email, "Status da ocorrência", "A sua ocorrência foi aprovada.");
-                }
+//                if (statusBool) {
+//                    System.out.println("Status está como: " + statusBool);
+//                    JavaSendEmail.enviarEmail(email, "Status da ocorrência", "A sua ocorrência foi aprovada.");
+//                }
                 
                 response.sendRedirect(request.getContextPath() + "/ocorrencias.jsp");
                 return;

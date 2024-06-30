@@ -7,6 +7,7 @@ package com.calamidade.site.resources;
  */
 public class Teste {
     public static void main(String[] args) {
-        Email.enviarEmail("luis.dutra@universo.univates.br", "Status da ocorrência", "A sua ocorrência foi aprovada.");
+        boolean ok = JavaSendEmail.enviarEmail("luis.dutra@universo.univates.br", "Status da ocorrência", "A sua ocorrência foi aprovada.");
+        System.out.println(ok);
     }
 }
