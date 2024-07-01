@@ -47,6 +47,8 @@ public class processaocorrencia extends HttpServlet {
                     } else {
                         data.atualizarOcorrencia(Integer.parseInt(alterarId), nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto, tipo);
                     }
+                    boolean ok = Email.enviarEmail("fernando.fzk@gmail.com", "Status da ocorrência", "A sua ocorrência foi aprovada.");
+                    System.out.println(ok);
                     response.sendRedirect(request.getContextPath() + "/ocorrencias.jsp");
                     return;
                 } catch (Exception e) {
@@ -66,6 +68,8 @@ public class processaocorrencia extends HttpServlet {
                 } else {
                     data.inserirOcorrencia(nome, email, datetime, titulo, resumo, status, null, latitude, longitude, aberto, tipo);
                 }
+                boolean ok = Email.enviarEmail("fernando.fzk@gmail.com", "Recebemos sua Ocorrência", "Olá, "+nome+ ". Estamos analisando sua ocorrência, entraremos em contato em breve!");
+                    System.out.println(ok);
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             } catch (Exception e) {
                 System.err.println("Erro ao inserir a ocorrência: " + e.getMessage());
