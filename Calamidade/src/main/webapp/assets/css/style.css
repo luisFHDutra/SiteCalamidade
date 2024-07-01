@@ -55,13 +55,27 @@ header {
 
 /*CSS formulario de ocorrencia*/
 #forms-ocorrencia {
-    height: 50%;
+    height: 35%;
     width: 30vw;
     background-color: #f9f9f9;
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
+}
+
+#header-forms {
     margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Montserrat", "Roboto", "sans-serif";
+    background-color: #F0C769;
+    width: 30vw;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: #fff;
 }
 
 #forms-ocorrencia form button {
